@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Presentation | VisualMenu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #F3F4F6;
+        }
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+        .slide {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.6s ease-in-out;
+        }
+        .slide.active {
+            display: flex;
+            opacity: 1;
+        }
+        .slide-content > * {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        .progress-bar-fill {
+            transition: width 0.4s ease-in-out;
+        }
+        .illustration-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 64px;
+            height: 64px;
+            border-radius: 9999px;
+            background-color: rgba(212, 175, 55, 0.1);
+            color: #D4AF37;
+            font-size: 2rem;
+        }
+        .ai-output-area {
+            background-color: #111827; /* gray-900 */
+            border-left: 4px solid #D4AF37;
+            padding: 1rem;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            color: #D1D5DB; /* gray-300 */
+            border-radius: 0 8px 8px 0;
+            min-height: 140px;
+            transition: background-color 0.3s;
+        }
+        .pricing-card {
+            border: 2px solid #374151;
+            transition: all 0.3s ease;
+        }
+        .pricing-card.featured {
+            border-color: #D4AF37;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
+
+    <div class="w-full max-w-4xl bg-white rounded-xl shadow-2xl overflow-hidden">
+        <!-- Slide Container -->
+        <div id="presentation-container" class="relative w-full h-[550px]">
+            
+            <!-- Slide 1: Title Slide -->
+            <div class="slide active absolute inset-0 flex-col items-center justify-center text-center p-8 bg-gray-900 text-white">
+                <div class="slide-content w-full flex flex-col items-center">
+                    <h1 class="text-6xl font-serif font-extrabold text-[#D4AF37]">VisualMenu</h1>
+                    <p class="mt-4 text-2xl text-gray-300">Where Your Menu Becomes an Experience</p>
+                    <p class="mt-8 text-lg border-t border-gray-700 pt-4">A Proposal for Restaurant Partners</p>
+                </div>
+            </div>
+
+            <!-- Slide 2: The Problem -->
+            <div class="slide absolute inset-0 flex-col justify-center p-12">
+                <div class="slide-content w-full">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-8">Why Traditional Menus Underserve Restaurants</h2>
+                    <p class="text-lg text-gray-600 mb-8">Static menus fail to engage modern diners and limit your restaurant's potential.</p>
+                    <div class="grid grid-cols-1 gap-6 text-lg">
+                        <div class="flex items-start">
+                            <div class="illustration-icon mr-4">🍽️</div>
+                            <div>
+                                <h3 class="font-bold text-gray-700">Guests Can’t "See" the Dish</h3>
+                                <p class="text-gray-600">Without visuals, customers play it safe, ordering familiar items instead of trying new, high-margin dishes.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="illustration-icon mr-4">🤫</div>
+                            <div>
+                                <h3 class="font-bold text-gray-700">Specials Are Often Ignored</h3>
+                                <p class="text-gray-600">High-margin specials and chef's recommendations get lost in a sea of text.</p>
+                            </div>
+                        </div>
+                         <div class="flex items-start">
+                            <div class="illustration-icon mr-4">🛠️</div>
+                            <div>
+                                <h3 class="font-bold text-gray-700">No Tools for Growth</h3>
+                                <p class="text-gray-600">Traditional menus lack tools for upselling, dietary filtering, or performance tracking.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3: Our Solution -->
+            <div class="slide absolute inset-0 flex-col justify-center p-12 bg-gray-800 text-white">
+                <div class="slide-content w-full">
+                    <h2 class="text-4xl font-bold mb-6">The New Standard in Digital Dining</h2>
+                    <p class="text-xl text-gray-300 mb-6">VisualMenu transforms your standard QR code or NFC tag into a breathtaking visual journey that captivates guests and amplifies sales.</p>
+                    <div class="bg-gray-900 p-6 rounded-lg text-center">
+                        <p class="text-3xl font-serif text-[#D4AF37]">Scan/Tap → See → Order</p>
+                        <p class="mt-2 text-gray-400">Guests unlock a visual, interactive experience with a simple tap or scan. No app needed.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 4: Key Features -->
+            <div class="slide absolute inset-0 flex-col justify-center p-12">
+                <div class="slide-content w-full">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-8">A Sales & Marketing Powerhouse</h2>
+                    <div class="grid grid-cols-3 gap-4 text-center">
+                        <div>
+                            <div class="illustration-icon mx-auto">📸</div>
+                            <h3 class="font-bold mt-2">Beautiful Photo Menus</h3>
+                            <p class="text-sm text-gray-600">High-resolution photos and video previews that make your dishes irresistible.</p>
+                        </div>
+                        <div>
+                            <div class="illustration-icon mx-auto">🌿</div>
+                            <h3 class="font-bold mt-2">Dietary & Spice Tags</h3>
+                            <p class="text-sm text-gray-600">Help guests find exactly what they want with clear, interactive tags.</p>
+                        </div>
+                        <div>
+                            <div class="illustration-icon mx-auto">✨</div>
+                            <h3 class="font-bold mt-2">AI-Powered Upsells</h3>
+                            <p class="text-sm text-gray-600">Suggests perfect pairings and high-margin items to increase check size.</p>
+                        </div>
+                         <div>
+                            <div class="illustration-icon mx-auto">👨‍🍳</div>
+                            <h3 class="font-bold mt-2">Chef Stories</h3>
+                            <p class="text-sm text-gray-600">Add a personal touch with stories and inspiration behind your dishes.</p>
+                        </div>
+                         <div>
+                            <div class="illustration-icon mx-auto">🔔</div>
+                            <h3 class="font-bold mt-2">Calling for Assistance</h3>
+                            <p class="text-sm text-gray-600">A simple tab allows guests to call for service directly from the menu.</p>
+                        </div>
+                         <div>
+                            <div class="illustration-icon mx-auto">📱</div>
+                            <h3 class="font-bold mt-2">QR & NFC Ready</h3>
+                            <p class="text-sm text-gray-600">Works with simple QR codes or modern NFC tags. No app or POS integration needed.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NEW Slide 5: AI Intelligence Hub -->
+            <div class="slide absolute inset-0 flex-col justify-center p-12 bg-gray-900 text-white">
+                <div class="slide-content w-full">
+                    <h2 class="text-4xl font-bold mb-6 text-center">AI Intelligence Hub</h2>
+                    <div class="grid grid-cols-2 gap-8">
+                        <!-- Left: AI Menu Lab -->
+                        <div class="bg-gray-800 p-6 rounded-lg">
+                            <h3 class="text-xl font-bold text-[#D4AF37] mb-4 flex items-center"><span class="text-2xl mr-2">🧪</span> AI Menu Lab</h3>
+                            <label for="cuisine-select" class="font-semibold text-sm text-gray-400">Select Cuisine Style</label>
+                            <select id="cuisine-select" class="w-full p-2 mt-1 rounded-md bg-gray-700 border-gray-600 text-white">
+                                <option>Modern Indian</option>
+                                <option>Italian Fusion</option>
+                                <option>Pan-Asian</option>
+                            </select>
+                            <button id="generate-menu-btn" class="w-full mt-3 bg-[#D4AF37] text-black font-bold py-2 rounded-lg hover:bg-opacity-90 transition">Generate Menu Ideas</button>
+                            <div id="ai-menu-output" class="ai-output-area"><p class="text-gray-500">Generate creative menu concepts and recipes.</p></div>
+                        </div>
+                        <!-- Right: AI Strategy Room -->
+                        <div class="bg-gray-800 p-6 rounded-lg">
+                            <h3 class="text-xl font-bold text-[#D4AF37] mb-4 flex items-center"><span class="text-2xl mr-2">📈</span> AI Strategy Room</h3>
+                             <label for="goal-select" class="font-semibold text-sm text-gray-400">Select Business Goal</label>
+                            <select id="goal-select" class="w-full p-2 mt-1 rounded-md bg-gray-700 border-gray-600 text-white">
+                                <option>Increase Lunch Traffic</option>
+                                <option>Boost Weekend Sales</option>
+                                <option>Attract Families</option>
+                            </select>
+                            <button id="generate-strategy-btn" class="w-full mt-3 bg-[#D4AF37] text-black font-bold py-2 rounded-lg hover:bg-opacity-90 transition">Generate Strategies</button>
+                            <div id="ai-strategy-output" class="ai-output-area"><p class="text-gray-500">Get actionable marketing strategies for your restaurant.</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 6: Subscription Packages -->
+            <div class="slide absolute inset-0 flex-col justify-center p-12 bg-gray-800 text-white">
+                <div class="slide-content w-full">
+                    <h2 class="text-4xl font-bold mb-8 text-center">Packages for Restaurants of All Sizes</h2>
+                    <div class="grid grid-cols-3 gap-6">
+                        <!-- Starter -->
+                        <div class="pricing-card bg-gray-700 p-6 rounded-lg text-center">
+                            <h3 class="text-2xl font-bold">Starter</h3>
+                            <p class="text-4xl font-extrabold my-4">₹1,499<span class="text-base font-medium text-gray-400">/mo</span></p>
+                            <ul class="space-y-2 text-gray-300 text-sm">
+                                <li>✓ Visual Photo Menu</li>
+                                <li>✓ QR Code Access</li>
+                                <li>✓ Dietary & Spice Tags</li>
+                            </ul>
+                        </div>
+                        <!-- Pro (Featured) -->
+                        <div class="pricing-card featured bg-gray-700 p-6 rounded-lg text-center">
+                             <p class="text-sm font-bold text-black bg-[#D4AF37] rounded-full px-3 py-1 inline-block -mt-10">Most Popular</p>
+                            <h3 class="text-2xl font-bold text-[#D4AF37]">Pro</h3>
+                            <p class="text-4xl font-extrabold my-4">₹2,999<span class="text-base font-medium text-gray-400">/mo</span></p>
+                            <ul class="space-y-2 text-gray-300 text-sm">
+                                <li>✓ Everything in Starter</li>
+                                <li>✓ Video Dish Previews</li>
+                                <li>✓ AI-Powered Upsells</li>
+                                <li>✓ Chef Stories</li>
+                            </ul>
+                        </div>
+                        <!-- Elite -->
+                        <div class="pricing-card bg-gray-700 p-6 rounded-lg text-center">
+                            <h3 class="text-2xl font-bold">Elite</h3>
+                            <p class="text-4xl font-extrabold my-4">₹4,999<span class="text-base font-medium text-gray-400">/mo</span></p>
+                            <ul class="space-y-2 text-gray-300 text-sm">
+                                <li>✓ Everything in Pro</li>
+                                <li>✓ Full Branding Customization</li>
+                                <li>✓ NFC Tag Support</li>
+                                <li>✓ Performance Analytics</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 7: Benefits for Restaurants -->
+            <div class="slide absolute inset-0 flex-col justify-center p-12">
+                <div class="slide-content w-full">
+                    <h2 class="text-4xl font-bold text-gray-800 mb-8">The Value Proposition</h2>
+                    <div class="grid grid-cols-2 gap-6 text-lg">
+                        <p class="bg-gray-100 p-4 rounded-lg">📈 <strong>Increase Average Order Value:</strong> AI suggestions and visual appeal drive higher spending.</p>
+                        <p class="bg-gray-100 p-4 rounded-lg">🌟 <strong>Elevate Your Brand:</strong> Offer a modern, premium experience that sets you apart.</p>
+                        <p class="bg-gray-100 p-4 rounded-lg">😊 <strong>Enhance Guest Satisfaction:</strong> An interactive and informative menu delights customers.</p>
+                        <p class="bg-gray-100 p-4 rounded-lg">💡 <strong>Gain Data Insights:</strong> Understand your most popular and viewed items to optimize your menu.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 8: Call to Action -->
+            <div class="slide absolute inset-0 flex-col items-center justify-center text-center p-8 bg-gray-900 text-white">
+                <div class="slide-content w-full flex flex-col items-center">
+                    <h2 class="text-5xl font-bold font-serif">Join Our Pilot Program</h2>
+                    <p class="mt-4 text-xl text-gray-300 max-w-2xl">Experience higher sales and happier customers with our exclusive 90-day, risk-free pilot program.</p>
+                    <button class="mt-8 bg-[#D4AF37] text-black font-bold py-3 px-8 rounded-full text-lg hover:bg-opacity-90 transition">Request a Pilot Spot</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Navigation & Progress Bar -->
+        <div class="bg-gray-200 p-4 flex items-center justify-between">
+            <button id="prev-btn" class="bg-gray-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-gray-700 transition disabled:opacity-50 disabled:cursor-not-allowed">Previous</button>
+            <div class="flex-grow mx-4">
+                <div class="w-full bg-gray-300 rounded-full h-2.5">
+                    <div id="progress-bar" class="bg-[#D4AF37] h-2.5 rounded-full progress-bar-fill"></div>
+                </div>
+            </div>
+            <button id="next-btn" class="bg-[#D4AF37] text-black font-bold py-2 px-6 rounded-lg hover:bg-opacity-90 transition">Next</button>
+        </div>
+    </div>
+
+    <script>
+        // --- GEMINI API HELPER ---
+        async function callGeminiAPI(prompt) {
+            const apiKey = ""; // Handled by the execution environment
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+            const payload = { contents: [{ parts: [{ text: prompt }] }] };
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                if (!response.ok) throw new Error(`API call failed: ${response.status}`);
+                const result = await response.json();
+                if (result.candidates && result.candidates[0].content.parts[0].text) {
+                    return result.candidates[0].content.parts[0].text;
+                }
+                return "No response from AI.";
+            } catch (error) {
+                console.error("Gemini API Error:", error);
+                return "Error contacting AI. Please check the console.";
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.slide');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const progressBar = document.getElementById('progress-bar');
+            let currentSlide = 0;
+
+            function animateSlideContent(slide) {
+                const elements = slide.querySelectorAll('.slide-content > *');
+                elements.forEach((el, index) => {
+                    setTimeout(() => {
+                        el.style.opacity = '1';
+                        el.style.transform = 'translateY(0)';
+                    }, (index + 1) * 150);
+                });
+            }
+
+            function updatePresentation() {
+                slides.forEach((slide, index) => {
+                    slide.classList.toggle('active', index === currentSlide);
+                    if (index === currentSlide) {
+                        animateSlideContent(slide);
+                    }
+                });
+                const progressPercentage = (currentSlide / (slides.length - 1)) * 100;
+                progressBar.style.width = `${progressPercentage}%`;
+                prevBtn.disabled = currentSlide === 0;
+                nextBtn.textContent = (currentSlide === slides.length - 1) ? 'Restart' : 'Next';
+            }
+
+            nextBtn.addEventListener('click', () => {
+                if (currentSlide < slides.length - 1) {
+                    currentSlide++;
+                } else {
+                    currentSlide = 0;
+                }
+                updatePresentation();
+            });
+
+            prevBtn.addEventListener('click', () => {
+                if (currentSlide > 0) {
+                    currentSlide--;
+                    updatePresentation();
+                }
+            });
+
+            // --- Gemini Feature Logic ---
+            const generateMenuBtn = document.getElementById('generate-menu-btn');
+            const cuisineSelect = document.getElementById('cuisine-select');
+            const menuOutput = document.getElementById('ai-menu-output');
+            
+            if (generateMenuBtn) {
+                generateMenuBtn.addEventListener('click', async () => {
+                    const cuisine = cuisineSelect.value;
+                    menuOutput.innerHTML = `<p class="text-gray-400">✨ Crafting a ${cuisine} menu...</p>`;
+                    const prompt = `You are a creative executive chef. Generate a sample menu with 3 dishes (an appetizer, a main, and a dessert) for a new "${cuisine}" restaurant concept. For the main course, which you should label as the "Most Preferred Recipe", briefly list its key ingredients.`;
+                    const response = await callGeminiAPI(prompt);
+                    const formattedResponse = response.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n\*/g, '<br>• ').replace(/\n/g, '<br>');
+                    menuOutput.innerHTML = formattedResponse;
+                });
+            }
+
+            const generateStrategyBtn = document.getElementById('generate-strategy-btn');
+            const goalSelect = document.getElementById('goal-select');
+            const strategyOutput = document.getElementById('ai-strategy-output');
+
+            if (generateStrategyBtn) {
+                generateStrategyBtn.addEventListener('click', async () => {
+                    const goal = goalSelect.value;
+                    strategyOutput.innerHTML = `<p class="text-gray-400">✨ Generating strategies for: ${goal}...</p>`;
+                    const prompt = `You are a restaurant marketing consultant. Provide 3 actionable, high-level strategies for a fine dining restaurant to achieve the following business goal: "${goal}".`;
+                    const response = await callGeminiAPI(prompt);
+                    const formattedResponse = response.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n\*/g, '<br>• ').replace(/\n/g, '<br>');
+                    strategyOutput.innerHTML = formattedResponse;
+                });
+            }
+
+            updatePresentation();
+        });
+    </script>
+
+</body>
+</html>
