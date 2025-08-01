@@ -53,7 +53,7 @@
             line-height: 1.6;
             color: #D1D5DB; /* gray-300 */
             border-radius: 0 8px 8px 0;
-            min-height: 140px;
+            min-height: 160px;
             transition: background-color 0.3s;
         }
         .pricing-card {
@@ -188,6 +188,7 @@
                                 <option>Increase Lunch Traffic</option>
                                 <option>Boost Weekend Sales</option>
                                 <option>Attract Families</option>
+                                <option>Enhance Social Media Presence</option>
                             </select>
                             <button id="generate-strategy-btn" class="w-full mt-3 bg-[#D4AF37] text-black font-bold py-2 rounded-lg hover:bg-opacity-90 transition">Generate Strategies</button>
                             <div id="ai-strategy-output" class="ai-output-area"><p class="text-gray-500">Get actionable marketing strategies for your restaurant.</p></div>
@@ -275,35 +276,47 @@
     </div>
 
     <script>
-        // --- SIMULATED GEMINI API HELPER ---
-        // This function simulates the AI response to make the demo work without a real API key.
-        async function callGeminiAPI(prompt) {
-            console.log("Simulating AI call with prompt:", prompt);
-            // Simulate network delay
-            await new Promise(resolve => setTimeout(resolve, 1000));
-
-            // Create pre-written responses based on the prompt
-            if (prompt.includes("Modern Indian")) {
-                return `**Appetizer:** Deconstructed Samosa Chaat with Tamarind Foam.
-                **Most Preferred Recipe: Butter Chicken Kulcha Tacos.**
-                *Key Ingredients: Slow-cooked chicken tikka, makhani gravy reduction, mini butter kulchas, pickled onion.*
-                **Dessert:** Saffron & Pistachio Kulfi with Rose Caviar.`;
-            } else if (prompt.includes("Italian Fusion")) {
-                return `**Appetizer:** Burrata with Masala Pesto & Cherry Tomatoes.
-                **Most Preferred Recipe: Tandoori Chicken Risotto.**
-                *Key Ingredients: Arborio rice, tandoori spiced chicken, saffron, parmesan, a hint of cream.*
-                **Dessert:** Gulab Jamun Tiramisu.`;
-            } else if (prompt.includes("Increase Lunch Traffic")) {
-                return `**1. Express Lunch Combo:** Create a high-value, fixed-price lunch combo that guarantees service within 15 minutes.
-                **2. Corporate Discount Program:** Partner with local offices to offer a 15% discount for their employees.
-                **3. Social Media Campaign:** Run targeted ads on Instagram showcasing the quick and delicious lunch options.`;
-            } else if (prompt.includes("Boost Weekend Sales")) {
-                return `**1. Live Music Nights:** Host a local artist or band on Friday and Saturday evenings.
-                **2. Chef's Tasting Menu:** Introduce an exclusive, multi-course tasting menu available only on weekends.
-                **3. Cocktail Specials:** Create a unique weekend-only cocktail list and promote it heavily on social media.`;
-            } else {
-                return "This is a simulated response for the selected topic. In a live version, this would be a unique AI-generated text.";
+        // --- SIMULATED AI RESPONSES ---
+        const simulatedAIResponses = {
+            menu: {
+                "Modern Indian": {
+                    title: "Menu Concept: 'Masala Modern'",
+                    content: "<strong>Appetizer:</strong> Deconstructed Samosa Chaat with Tamarind Foam.<br><strong>Most Preferred Recipe: Butter Chicken Kulcha Tacos.</strong><br>• <em>Key Ingredients: Slow-cooked chicken tikka, makhani gravy reduction, mini butter kulchas, pickled onion.</em><br><strong>Dessert:</strong> Saffron & Pistachio Kulfi with Rose Caviar."
+                },
+                "Italian Fusion": {
+                    title: "Menu Concept: 'Tandoori Trattoria'",
+                    content: "<strong>Appetizer:</strong> Burrata with Masala Pesto & Cherry Tomatoes.<br><strong>Most Preferred Recipe: Tandoori Chicken Risotto.</strong><br>• <em>Key Ingredients: Arborio rice, tandoori spiced chicken, saffron, parmesan, a hint of cream.</em><br><strong>Dessert:</strong> Gulab Jamun Tiramisu."
+                },
+                "Pan-Asian": {
+                    title: "Menu Concept: 'Wok & Spice'",
+                    content: "<strong>Appetizer:</strong> Crispy Lotus Stem in a Honey-Chili Glaze.<br><strong>Most Preferred Recipe: Thai Green Curry Lamb Shanks.</strong><br>• <em>Key Ingredients: Slow-braised lamb shank, homemade green curry paste, coconut milk, Thai basil.</em><br><strong>Dessert:</strong> Mango Sticky Rice with Coconut Ice Cream."
+                }
+            },
+            strategy: {
+                "Increase Lunch Traffic": {
+                    title: "Strategy: The Power Lunch",
+                    content: "<strong>1. Express Lunch Combo:</strong> Create a high-value, fixed-price combo that guarantees service within 15 minutes.<br><strong>2. Corporate Discount Program:</strong> Partner with local offices to offer a 15% discount for their employees.<br><strong>3. Social Media Campaign:</strong> Run targeted ads on Instagram showcasing the quick and delicious lunch options."
+                },
+                "Boost Weekend Sales": {
+                    title: "Strategy: The Weekend Experience",
+                    content: "<strong>1. Live Music Nights:</strong> Host a local artist or band on Friday and Saturday evenings.<br><strong>2. Chef's Tasting Menu:</strong> Introduce an exclusive, multi-course tasting menu available only on weekends.<br><strong>3. Cocktail Specials:</strong> Create a unique weekend-only cocktail list and promote it heavily."
+                },
+                "Attract Families": {
+                    title: "Strategy: The Family Destination",
+                    content: "<strong>1. 'Little Gourmets' Menu:</strong> Develop a creative and healthy kids' menu.<br><strong>2. Weekend Family Brunch:</strong> Offer a special brunch menu on Sundays with activities for children.<br><strong>3. Loyalty Program:</strong> Reward repeat family customers with special discounts or free desserts."
+                },
+                 "Enhance Social Media Presence": {
+                    title: "Strategy: The Instagram Magnet",
+                    content: "<strong>1. 'Dish of the Week' Feature:</strong> Create a highly visual post/reel for one signature dish each week.<br><strong>2. Influencer Collaborations:</strong> Invite local food bloggers for a tasting experience in exchange for posts.<br><strong>3. User-Generated Content Contest:</strong> Encourage guests to post photos with a specific hashtag to win a prize."
+                }
             }
+        };
+
+        // --- SIMULATED GEMINI API HELPER ---
+        async function callGeminiAPI(type, key) {
+            console.log(`Simulating AI call for ${type}: ${key}`);
+            await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate network delay
+            return simulatedAIResponses[type][key] || { title: "Error", content: "No simulation data found for this option." };
         }
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -361,10 +374,8 @@
                 generateMenuBtn.addEventListener('click', async () => {
                     const cuisine = cuisineSelect.value;
                     menuOutput.innerHTML = `<p class="text-gray-400">✨ Crafting a ${cuisine} menu...</p>`;
-                    const prompt = `You are a creative executive chef. Generate a sample menu with 3 dishes (an appetizer, a main, and a dessert) for a new "${cuisine}" restaurant concept. For the main course, which you should label as the "Most Preferred Recipe", briefly list its key ingredients.`;
-                    const response = await callGeminiAPI(prompt);
-                    const formattedResponse = response.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n\*/g, '<br>• ').replace(/\n/g, '<br>');
-                    menuOutput.innerHTML = formattedResponse;
+                    const response = await callGeminiAPI('menu', cuisine);
+                    menuOutput.innerHTML = `<strong>${response.title}</strong><br>${response.content}`;
                 });
             }
 
@@ -376,10 +387,8 @@
                 generateStrategyBtn.addEventListener('click', async () => {
                     const goal = goalSelect.value;
                     strategyOutput.innerHTML = `<p class="text-gray-400">✨ Generating strategies for: ${goal}...</p>`;
-                    const prompt = `You are a restaurant marketing consultant. Provide 3 actionable, high-level strategies for a fine dining restaurant to achieve the following business goal: "${goal}".`;
-                    const response = await callGeminiAPI(prompt);
-                    const formattedResponse = response.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n\*/g, '<br>• ').replace(/\n/g, '<br>');
-                    strategyOutput.innerHTML = formattedResponse;
+                    const response = await callGeminiAPI('strategy', goal);
+                    strategyOutput.innerHTML = `<strong>${response.title}</strong><br>${response.content}`;
                 });
             }
 
