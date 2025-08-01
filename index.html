@@ -275,27 +275,34 @@
     </div>
 
     <script>
-        // --- GEMINI API HELPER ---
+        // --- SIMULATED GEMINI API HELPER ---
+        // This function simulates the AI response to make the demo work without a real API key.
         async function callGeminiAPI(prompt) {
-            const apiKey = ""; // Handled by the execution environment
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
-            const payload = { contents: [{ parts: [{ text: prompt }] }] };
+            console.log("Simulating AI call with prompt:", prompt);
+            // Simulate network delay
+            await new Promise(resolve => setTimeout(resolve, 1000));
 
-            try {
-                const response = await fetch(apiUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-                if (!response.ok) throw new Error(`API call failed: ${response.status}`);
-                const result = await response.json();
-                if (result.candidates && result.candidates[0].content.parts[0].text) {
-                    return result.candidates[0].content.parts[0].text;
-                }
-                return "No response from AI.";
-            } catch (error) {
-                console.error("Gemini API Error:", error);
-                return "Error contacting AI. Please check the console.";
+            // Create pre-written responses based on the prompt
+            if (prompt.includes("Modern Indian")) {
+                return `**Appetizer:** Deconstructed Samosa Chaat with Tamarind Foam.
+                **Most Preferred Recipe: Butter Chicken Kulcha Tacos.**
+                *Key Ingredients: Slow-cooked chicken tikka, makhani gravy reduction, mini butter kulchas, pickled onion.*
+                **Dessert:** Saffron & Pistachio Kulfi with Rose Caviar.`;
+            } else if (prompt.includes("Italian Fusion")) {
+                return `**Appetizer:** Burrata with Masala Pesto & Cherry Tomatoes.
+                **Most Preferred Recipe: Tandoori Chicken Risotto.**
+                *Key Ingredients: Arborio rice, tandoori spiced chicken, saffron, parmesan, a hint of cream.*
+                **Dessert:** Gulab Jamun Tiramisu.`;
+            } else if (prompt.includes("Increase Lunch Traffic")) {
+                return `**1. Express Lunch Combo:** Create a high-value, fixed-price lunch combo that guarantees service within 15 minutes.
+                **2. Corporate Discount Program:** Partner with local offices to offer a 15% discount for their employees.
+                **3. Social Media Campaign:** Run targeted ads on Instagram showcasing the quick and delicious lunch options.`;
+            } else if (prompt.includes("Boost Weekend Sales")) {
+                return `**1. Live Music Nights:** Host a local artist or band on Friday and Saturday evenings.
+                **2. Chef's Tasting Menu:** Introduce an exclusive, multi-course tasting menu available only on weekends.
+                **3. Cocktail Specials:** Create a unique weekend-only cocktail list and promote it heavily on social media.`;
+            } else {
+                return "This is a simulated response for the selected topic. In a live version, this would be a unique AI-generated text.";
             }
         }
 
